@@ -11,4 +11,5 @@ enum StorageKeys {
     static let readingProgress = "renuevo.readingProgress.v1"
     static let memorizationCards = "renuevo.memorization.v1"
     static let appOpenDayKeys = "renuevo.appOpenDayKeys.v1"
+    static let points = "renuevo.points.v1"
 }

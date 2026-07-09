@@ -49,10 +49,11 @@ struct InsightsView: View {
     @ViewBuilder
     private var resumenContent: some View {
         Section {
-            HStack(spacing: 20) {
+            HStack(spacing: 14) {
                 StatTile(title: "Racha", value: "\(store.currentStreak)", subtitle: "días seguidos", systemImage: "flame.fill", tint: .orange)
                 StatTile(title: "Metas", value: "\(Int(store.goalCompletionRate * 100))%", subtitle: "completadas", systemImage: "target", tint: .green)
                 StatTile(title: "Hábitos hoy", value: "\(Int(store.todayHabitCompletionRate * 100))%", subtitle: "hechos", systemImage: "repeat.circle.fill", tint: Color.renuevoAccent)
+                StatTile(title: "Puntos", value: "\(store.points)", subtitle: "acumulados", systemImage: "star.fill", tint: .yellow)
             }
             .padding(.vertical, 6)
         }

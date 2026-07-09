@@ -109,9 +109,23 @@ private struct ReadingPlanDayView: View {
     @Environment(\.dismiss) private var dismiss
     @ObservedObject private var store = DataStore.shared
     @StateObject private var speech = SpeechReader()
+    @State private var responseText: String
+    @State private var justEarnedPoints: Int?
+
+    init(plan: ReadingPlan, day: ReadingPlanDay) {
+        self.plan = plan
+        self.day = day
+        _responseText = State(initialValue: DataStore.shared.progress(forPlan: plan.id).response(forDay: day.id))
+    }
 
     private var isCompleted: Bool {
         store.progress(forPlan: plan.id).isCompleted(day: day.id)
+    }
+
+    private var pointsForCompleting: Int {
+        responseText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+            ? Points.readingDayCompleted
+            : Points.readingDayCompleted + Points.readingDayResponseBonus
     }
 
     var body: some View {
@@ -147,12 +161,39 @@ private struct ReadingPlanDayView: View {
                     Label("Acción de hoy", systemImage: "checkmark.circle").font(.headline)
                 }
 
+                Section {
+                    TextEditor(text: $responseText)
+                        .frame(minHeight: 120)
+                        .disabled(isCompleted)
+                        .padding(8)
+                        .background(Color.renuevoBackground)
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                } header: {
+                    Label("Escribe tu respuesta", systemImage: "pencil.and.scribble").font(.headline)
+                } footer: {
+                    Text("Escribe aquí mismo lo que Dios te habló hoy o cómo aplicaste la acción — suma puntos extra.")
+                }
+
+                if let justEarnedPoints {
+                    Label("¡Ganaste \(justEarnedPoints) puntos!", systemImage: "sparkles")
+                        .font(.subheadline.bold())
+                        .foregroundStyle(.green)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                }
+
                 Button {
-                    store.markReadingDayCompleted(planId: plan.id, day: day.id)
-                    dismiss()
+                    let earned = store.markReadingDayCompleted(planId: plan.id, day: day.id, response: responseText)
+                    if earned > 0 {
+                        justEarnedPoints = earned
+                    } else {
+                        dismiss()
+                    }
                 } label: {
-                    Label(isCompleted ? "Ya completado" : "Marcar como completado", systemImage: "checkmark")
-                        .frame(maxWidth: .infinity)
+                    Label(
+                        isCompleted ? "Ya completado" : "Marcar como completado (+\(pointsForCompleting) puntos)",
+                        systemImage: "checkmark"
+                    )
+                    .frame(maxWidth: .infinity)
                 }
                 .buttonStyle(.borderedProminent)
                 .tint(Color.renuevoAccent)

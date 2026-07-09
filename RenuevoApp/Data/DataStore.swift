@@ -42,6 +42,9 @@ final class DataStore: ObservableObject {
     @Published var appOpenDayKeys: Set<String> = [] {
         didSet { save(appOpenDayKeys, forKey: StorageKeys.appOpenDayKeys) }
     }
+    @Published var points: Int = 0 {
+        didSet { save(points, forKey: StorageKeys.points) }
+    }
 
     private init() {
         Self.migrateToAppGroupIfNeeded()
@@ -53,6 +56,7 @@ final class DataStore: ObservableObject {
         readingProgress = load([String: ReadingPlanProgress].self, forKey: StorageKeys.readingProgress) ?? [:]
         memorizationCards = load([Int: MemorizationCard].self, forKey: StorageKeys.memorizationCards) ?? [:]
         appOpenDayKeys = load(Set<String>.self, forKey: StorageKeys.appOpenDayKeys) ?? []
+        points = load(Int.self, forKey: StorageKeys.points) ?? 0
     }
 
     /// One-time copy from the old per-app UserDefaults into the shared App
@@ -181,11 +185,26 @@ final class DataStore: ObservableObject {
         readingProgress[planId] ?? ReadingPlanProgress(planId: planId)
     }
 
-    func markReadingDayCompleted(planId: String, day: Int) {
+    /// Marks a reading day done and awards points: a base amount just for
+    /// completing it, plus a bonus if the user wrote something inline for it.
+    /// Points are only awarded the first time a given day is completed.
+    @discardableResult
+    func markReadingDayCompleted(planId: String, day: Int, response: String = "") -> Int {
         var progress = progress(forPlan: planId)
+        let alreadyCompleted = progress.completedDayIDs.contains(day)
         progress.completedDayIDs.insert(day)
         progress.lastCompletedAt = Date()
+
+        let trimmedResponse = response.trimmingCharacters(in: .whitespacesAndNewlines)
+        if !trimmedResponse.isEmpty {
+            progress.dayResponses[day] = trimmedResponse
+        }
         readingProgress[planId] = progress
+
+        guard !alreadyCompleted else { return 0 }
+        let earned = trimmedResponse.isEmpty ? Points.readingDayCompleted : Points.readingDayCompleted + Points.readingDayResponseBonus
+        points += earned
+        return earned
     }
 
     // MARK: - Memorization

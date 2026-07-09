@@ -59,6 +59,7 @@
 		704E95B946ED02C4750D9B0E /* MemorizationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA567AA434DA77F707FAA8B0 /* MemorizationCard.swift */; };
 		713FCCB7753931FBBDC23041 /* MoodLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6508FFA3CDAE2A3BFDE7D188 /* MoodLibrary.swift */; };
 		7381A870637B1C17572B86B5 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF925EBCD2C3C4009C564397 /* UserNotifications.framework */; };
+		7572AA3EA82738BFC47A1CA6 /* Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D313718476AADA3FB73E83 /* Points.swift */; };
 		76F306E8071EAAD5B79069B2 /* Mood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398041338873243B1EB69B7C /* Mood.swift */; };
 		778AC818C1DB8DBAA344F373 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677004B8FF4121E5F0CB9428 /* Theme.swift */; };
 		78D364E622455BDD2A011AD9 /* GoalEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5627E2BE249290CBC81C89A /* GoalEditorView.swift */; };
@@ -79,12 +80,14 @@
 		967B244EB4699C700C90AD20 /* MemorizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121CA8522954DEDB465B2F21 /* MemorizationView.swift */; };
 		997064F5160CAB6DFD496296 /* GoalsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E36102BC8D29113B0AA299 /* GoalsWidget.swift */; };
 		9DF1F71039248C039D9CBA35 /* GoalsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8284F8F92A52D348EFF280 /* GoalsView.swift */; };
+		9F4BD4B917291791824BF37D /* Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D313718476AADA3FB73E83 /* Points.swift */; };
 		9F9AC129EF3C60481E5E2843 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 896B7BF2EF3132C2B6DFF1F5 /* Assets.xcassets */; };
 		A28F6065F504A2F9224B565D /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2630176EBAA2DE94AA2530A /* Goal.swift */; };
 		A2A426E7C115D3C5C26A8F55 /* WatchBreathingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFF0FC929D5BA2F815D8F57 /* WatchBreathingView.swift */; };
 		A3B96FB91EAD56B9A731636F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE522ABD1FCF8E439C5D7DFE /* Assets.xcassets */; };
 		AC70197D011DBCB8F75DB65D /* SeasonalCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586C115BCE07ADDE98977CCD /* SeasonalCollection.swift */; };
 		AE0569E0E3B72960CFAD64FE /* PodcastsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387D99BF04A3C8A46C38B90B /* PodcastsView.swift */; };
+		B449E87F7968574C927F31D6 /* Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D313718476AADA3FB73E83 /* Points.swift */; };
 		B7B8562C1BB52859133EFBC8 /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92ED7C43C4E8527DCED78DA /* Habit.swift */; };
 		B99EF2AB62E604EE28EB7D1E /* RenuevoWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 088B1D7708332A6CD87379FA /* RenuevoWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BA6A9EA1C3A5575BDD4A260E /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D4B3465CFC0C6EB9813941 /* AppGroup.swift */; };
@@ -100,6 +103,7 @@
 		E76FBB035B3627D32C10AFE3 /* StorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDD2001FD06721CF1815C14 /* StorageKeys.swift */; };
 		E973D33CA3C8917E86B88657 /* RenuevoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D0394B6A6FEEB4BDC4F71B /* RenuevoApp.swift */; };
 		EAEB4E34C9ABAFBA45565E43 /* QuoteLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358425C0F96121B90C3C3D70 /* QuoteLibrary.swift */; };
+		EFDF4E1E4E66BFA240CC5DA3 /* Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D313718476AADA3FB73E83 /* Points.swift */; };
 		F1C41FE242A6D0BFF5B01E99 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D4B3465CFC0C6EB9813941 /* AppGroup.swift */; };
 		F845E33ECD25B9FBA0D3B245 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89017D26BD1238965F1EA867 /* ChatView.swift */; };
 		FAC3F6973780F11F1491A01F /* ReadingPlanLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADBBF93DC2EA8DD48ECBA12 /* ReadingPlanLibrary.swift */; };
@@ -152,6 +156,7 @@
 		398041338873243B1EB69B7C /* Mood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mood.swift; sourceTree = "<group>"; };
 		3BEAB468F86FE18C8B1306C9 /* RenuevoMenuBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RenuevoMenuBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F95ED0050E98464F0084737 /* RenuevoWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RenuevoWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		42D313718476AADA3FB73E83 /* Points.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Points.swift; sourceTree = "<group>"; };
 		46FCF516A409E2578D0EDD41 /* ReadingPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingPlan.swift; sourceTree = "<group>"; };
 		482211621A7FEDF27065F2CB /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		53972BB1F510B62211686089 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -345,6 +350,7 @@
 				CA567AA434DA77F707FAA8B0 /* MemorizationCard.swift */,
 				398041338873243B1EB69B7C /* Mood.swift */,
 				6508FFA3CDAE2A3BFDE7D188 /* MoodLibrary.swift */,
+				42D313718476AADA3FB73E83 /* Points.swift */,
 				CBCFB031080E453C56A9DF45 /* PrayerRequest.swift */,
 				85AFA0335446EC30B888BF7D /* Quote.swift */,
 				358425C0F96121B90C3C3D70 /* QuoteLibrary.swift */,
@@ -562,6 +568,7 @@
 				02E47D02ADEDA87CB01C5BAB /* MemorizationCard.swift in Sources */,
 				36A94BDE26A6B0D5D8078D27 /* Mood.swift in Sources */,
 				713FCCB7753931FBBDC23041 /* MoodLibrary.swift in Sources */,
+				B449E87F7968574C927F31D6 /* Points.swift in Sources */,
 				129BE91829C2C9B928467838 /* PrayerRequest.swift in Sources */,
 				26C534413B889563B2A3FE42 /* Quote.swift in Sources */,
 				92A689BCC5C1CB4D0AB5B69C /* QuoteLibrary.swift in Sources */,
@@ -586,6 +593,7 @@
 				4B1DC7670E3204F99D5B1AF5 /* MemorizationCard.swift in Sources */,
 				106E4676759AA7C11CB93A8A /* Mood.swift in Sources */,
 				35B7A47E22EED038C3712724 /* MoodLibrary.swift in Sources */,
+				9F4BD4B917291791824BF37D /* Points.swift in Sources */,
 				8F74F35E9474340CF1088A8D /* PrayerRequest.swift in Sources */,
 				20C903AFEEC6F68229C8EB4F /* Quote.swift in Sources */,
 				1E0827FEAF4646FA22DDD438 /* QuoteLibrary.swift in Sources */,
@@ -610,6 +618,7 @@
 				704E95B946ED02C4750D9B0E /* MemorizationCard.swift in Sources */,
 				122617D58190A3D8FAD7D0C9 /* Mood.swift in Sources */,
 				C17688FEA3FF8C9990E10315 /* MoodLibrary.swift in Sources */,
+				7572AA3EA82738BFC47A1CA6 /* Points.swift in Sources */,
 				37C5B21CE780CAE0BE00266A /* PrayerRequest.swift in Sources */,
 				FD4E0C60503F4B1B9ED172B3 /* Quote.swift in Sources */,
 				EAEB4E34C9ABAFBA45565E43 /* QuoteLibrary.swift in Sources */,
@@ -650,6 +659,7 @@
 				15D8F681A79F240A4EC2E94A /* MoodLibrary.swift in Sources */,
 				84D27DEC75984FD25ABA4775 /* NotificationManager.swift in Sources */,
 				AE0569E0E3B72960CFAD64FE /* PodcastsView.swift in Sources */,
+				EFDF4E1E4E66BFA240CC5DA3 /* Points.swift in Sources */,
 				8330F4A47A8AD5620E85BBEB /* PrayerListView.swift in Sources */,
 				05AFF21716E7E8ED7A972FB4 /* PrayerRequest.swift in Sources */,
 				47A12F3801A19211B8752DE6 /* Quote.swift in Sources */,

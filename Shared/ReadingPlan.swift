@@ -36,8 +36,12 @@ struct ReadingPlanProgress: Codable, Hashable {
     var completedDayIDs: Set<Int> = []
     var startedAt: Date = Date()
     var lastCompletedAt: Date?
+    /// What the user wrote for each day, keyed by day id — written inline at
+    /// the end of that day's reading, right where they finish it.
+    var dayResponses: [Int: String] = [:]
 
     func isCompleted(day: Int) -> Bool { completedDayIDs.contains(day) }
+    func response(forDay day: Int) -> String { dayResponses[day] ?? "" }
 
     /// The next day to read: the first day not yet completed, or nil if the plan is done.
     func nextDay(in plan: ReadingPlan) -> ReadingPlanDay? {
