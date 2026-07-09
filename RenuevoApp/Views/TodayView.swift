@@ -77,16 +77,13 @@ struct TodayView: View {
                     .background(Color.renuevoBackground)
                     .clipShape(RoundedRectangle(cornerRadius: 20))
 
-                    HStack {
-                        ShareLink(item: "\(quote.text) — \(quote.reference)") {
-                            Label("Compartir mensaje", systemImage: "square.and.arrow.up")
-                        }
-                        .buttonStyle(.bordered)
+                    HStack(spacing: 24) {
+                        ShareButton(quote: quote)
 
                         SpeechButton(speech: speech, text: quote.spokenScript)
                     }
-
-                    ShareStoryButton(quote: quote)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 4)
 
                     Divider().padding(.vertical, 4)
 
@@ -141,6 +138,27 @@ struct TodayView: View {
                 NavigationStack { BreathingView() }
             }
         }
+    }
+}
+
+/// Clean, icon-only circular button used for the daily-message actions
+/// (share message, listen, share story). The Label's text is kept for
+/// VoiceOver but hidden visually via `.iconOnly`.
+struct CircularIconButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .labelStyle(.iconOnly)
+            .font(.system(size: 20, weight: .semibold))
+            .foregroundStyle(Color.renuevoAccent)
+            .frame(width: 54, height: 54)
+            .background(Color.renuevoAccent.opacity(0.12), in: Circle())
+            .overlay(
+                Circle().strokeBorder(Color.renuevoAccent.opacity(0.18), lineWidth: 1)
+            )
+            .contentShape(Circle())
+            .scaleEffect(configuration.isPressed ? 0.92 : 1)
+            .opacity(configuration.isPressed ? 0.7 : 1)
+            .animation(.easeOut(duration: 0.15), value: configuration.isPressed)
     }
 }
 

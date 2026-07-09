@@ -335,81 +335,56 @@ enum ShareStyleSampler {
     }
 }
 
-/// A "Compartir historia" button that offers 3 randomly-sampled styles to
-/// choose from before opening the share sheet with the chosen one.
-struct ShareStoryButton: View {
+/// Identifiable wrapper so the iOS activity sheet can be driven by
+/// `.sheet(item:)` — more reliable than presenting a second boolean sheet from
+/// within an already-presented sheet (which can silently no-op due to timing).
+private struct SharePayload: Identifiable {
+    let id = UUID()
+    let items: [Any]
+}
+
+/// The single "Compartir" button on the "Hoy" screen. Tapping it opens one
+/// unified sheet offering both image and text ways to share the daily message.
+struct ShareButton: View {
     let quote: Quote
-    @State private var showingPicker = false
+    @State private var showingSheet = false
 
     var body: some View {
         Button {
-            showingPicker = true
+            showingSheet = true
         } label: {
-            Label("Compartir historia", systemImage: "photo.badge.plus")
+            Label("Compartir", systemImage: "square.and.arrow.up")
         }
-        .buttonStyle(.bordered)
-        .sheet(isPresented: $showingPicker) {
-            ShareStylePickerView(quote: quote)
+        .buttonStyle(CircularIconButtonStyle())
+        .sheet(isPresented: $showingSheet) {
+            ShareSheetView(quote: quote)
         }
     }
 }
 
-/// Sheet shown when the user taps "Compartir historia": 3 live mini previews,
-/// re-rolled with a fresh random trio every time it's opened.
-struct ShareStylePickerView: View {
+/// Unified share sheet: an image section (3 live style previews, re-rollable,
+/// each tappable to render + share a Story-shaped PNG) and a text section
+/// (share the message as plain text or copy it to the clipboard).
+struct ShareSheetView: View {
     let quote: Quote
     @Environment(\.dismiss) private var dismiss
     @State private var styles: [QuoteCardStyle] = []
-    @State private var shareURL: URL?
-    @State private var showingShare = false
+    @State private var sharePayload: SharePayload?
+    @State private var didCopy = false
+
+    private var messageText: String { "\(quote.text) — \(quote.reference)" }
 
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack(spacing: 20) {
-                    Text("Toca un estilo para compartirlo. Cada vez te mostramos una combinación distinta.")
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-                        .multilineTextAlignment(.center)
-                        .padding(.horizontal)
-
-                    HStack(spacing: 14) {
-                        ForEach(styles) { style in
-                            Button {
-                                share(with: style)
-                            } label: {
-                                VStack(spacing: 8) {
-                                    ShareableQuoteCard(quote: quote, style: style, scale: 0.10)
-                                        .frame(width: 1080 * 0.10, height: 1920 * 0.10)
-                                        .clipShape(RoundedRectangle(cornerRadius: 14))
-                                        .overlay(
-                                            RoundedRectangle(cornerRadius: 14)
-                                                .stroke(Color.primary.opacity(0.08), lineWidth: 1)
-                                        )
-                                    Text(style.name)
-                                        .font(.caption2)
-                                        .foregroundStyle(.secondary)
-                                        .multilineTextAlignment(.center)
-                                        .lineLimit(2)
-                                        .frame(width: 1080 * 0.10)
-                                }
-                            }
-                            .buttonStyle(.plain)
-                        }
-                    }
-                    .padding(.horizontal)
-
-                    Button {
-                        styles = ShareStyleSampler.sampleThree()
-                    } label: {
-                        Label("Mostrar otros 3 estilos", systemImage: "arrow.triangle.2.circlepath")
-                    }
-                    .buttonStyle(.bordered)
-                    .padding(.top, 8)
+                VStack(alignment: .leading, spacing: 28) {
+                    imageSection
+                    Divider()
+                    textSection
                 }
                 .padding(.vertical, 24)
             }
-            .navigationTitle("Elige un estilo")
+            .navigationTitle("Compartir")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
@@ -422,17 +397,118 @@ struct ShareStylePickerView: View {
                 styles = ShareStyleSampler.sampleThree()
             }
         }
-        .sheet(isPresented: $showingShare) {
-            if let shareURL {
-                ActivityShareSheet(items: [shareURL])
-            }
+        .sheet(item: $sharePayload) { payload in
+            ActivityShareSheet(items: payload.items)
         }
     }
 
-    private func share(with style: QuoteCardStyle) {
+    // MARK: - Image section
+
+    private var imageSection: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            sectionHeader("Compartir como imagen", systemImage: "photo.badge.plus")
+
+            Text("Toca un estilo para compartirlo. Cada vez te mostramos una combinación distinta.")
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+                .padding(.horizontal)
+
+            HStack(spacing: 14) {
+                ForEach(styles) { style in
+                    Button {
+                        shareImage(with: style)
+                    } label: {
+                        VStack(spacing: 8) {
+                            ShareableQuoteCard(quote: quote, style: style, scale: 0.10)
+                                .frame(width: 1080 * 0.10, height: 1920 * 0.10)
+                                .clipShape(RoundedRectangle(cornerRadius: 14))
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 14)
+                                        .stroke(Color.primary.opacity(0.08), lineWidth: 1)
+                                )
+                            Text(style.name)
+                                .font(.caption2)
+                                .foregroundStyle(.secondary)
+                                .multilineTextAlignment(.center)
+                                .lineLimit(2)
+                                .frame(width: 1080 * 0.10)
+                        }
+                    }
+                    .buttonStyle(.plain)
+                }
+            }
+            .frame(maxWidth: .infinity)
+            .padding(.horizontal)
+
+            Button {
+                styles = ShareStyleSampler.sampleThree()
+            } label: {
+                Label("Mostrar otros 3 estilos", systemImage: "arrow.triangle.2.circlepath")
+            }
+            .buttonStyle(.bordered)
+            .frame(maxWidth: .infinity)
+        }
+    }
+
+    // MARK: - Text section
+
+    private var textSection: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            sectionHeader("Compartir como texto", systemImage: "text.quote")
+
+            Text(messageText)
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+                .padding(14)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(Color.renuevoBackground)
+                .clipShape(RoundedRectangle(cornerRadius: 14))
+                .padding(.horizontal)
+
+            VStack(spacing: 10) {
+                Button {
+                    sharePayload = SharePayload(items: [messageText])
+                } label: {
+                    Label("Compartir como texto", systemImage: "square.and.arrow.up")
+                        .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(.borderedProminent)
+                .tint(Color.renuevoAccent)
+
+                Button {
+                    copyMessage()
+                } label: {
+                    Label(didCopy ? "¡Copiado!" : "Copiar mensaje",
+                          systemImage: didCopy ? "checkmark" : "doc.on.doc")
+                        .frame(maxWidth: .infinity)
+                }
+                .buttonStyle(.bordered)
+                .tint(Color.renuevoAccent)
+            }
+            .padding(.horizontal)
+        }
+    }
+
+    private func sectionHeader(_ title: String, systemImage: String) -> some View {
+        Label(title, systemImage: systemImage)
+            .font(.headline)
+            .foregroundStyle(Color.renuevoAccent)
+            .padding(.horizontal)
+    }
+
+    // MARK: - Actions
+
+    private func shareImage(with style: QuoteCardStyle) {
         guard let url = QuoteImageRenderer.renderPNG(for: quote, style: style) else { return }
-        shareURL = url
-        showingShare = true
+        sharePayload = SharePayload(items: [url])
+    }
+
+    private func copyMessage() {
+        UIPasteboard.general.string = messageText
+        withAnimation { didCopy = true }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.8) {
+            withAnimation { didCopy = false }
+        }
     }
 }
 

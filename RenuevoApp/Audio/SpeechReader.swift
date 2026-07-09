@@ -30,10 +30,11 @@ final class SpeechReader: NSObject, ObservableObject, AVSpeechSynthesizerDelegat
 
         let utterance = AVSpeechUtterance(string: cleaned)
         utterance.voice = Self.bestLatinSpanishVoice()
-        // Slightly slower and a touch brighter than default: warmer and easier
-        // to savor for devotional content, without dragging or sounding flat.
+        // Slightly slower than default for devotional pacing. Pitch kept at
+        // neutral (1.0): raising it made the compact voice sound thinner and
+        // more synthetic; a natural pitch reads warmer and less robotic.
         utterance.rate = AVSpeechUtteranceDefaultSpeechRate * 0.9
-        utterance.pitchMultiplier = 1.04
+        utterance.pitchMultiplier = 1.0
         utterance.postUtteranceDelay = 0.05
         synthesizer.speak(utterance)
         isSpeaking = true
@@ -112,6 +113,6 @@ struct SpeechButton: View {
         } label: {
             Label(speech.isSpeaking ? "Detener" : "Escuchar", systemImage: speech.isSpeaking ? "stop.fill" : "speaker.wave.2.fill")
         }
-        .buttonStyle(.bordered)
+        .buttonStyle(CircularIconButtonStyle())
     }
 }
