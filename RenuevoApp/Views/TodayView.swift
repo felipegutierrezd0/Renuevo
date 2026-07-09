@@ -83,8 +83,10 @@ struct TodayView: View {
                         }
                         .buttonStyle(.bordered)
 
-                        SpeechButton(speech: speech, text: "\(quote.text). \(quote.reflection)")
+                        SpeechButton(speech: speech, text: quote.spokenScript)
                     }
+
+                    ShareStoryButton(quote: quote)
 
                     Divider().padding(.vertical, 4)
 
@@ -158,7 +160,7 @@ struct SeasonalDetailView: View {
                             .foregroundStyle(.secondary)
                         Text(quote.reflection)
                             .font(.subheadline)
-                        SpeechButton(speech: speech, text: "\(quote.text). \(quote.reflection)")
+                        SpeechButton(speech: speech, text: quote.spokenScript)
                     }
                     .padding(16)
                     .frame(maxWidth: .infinity, alignment: .leading)

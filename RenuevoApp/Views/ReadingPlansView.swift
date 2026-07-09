@@ -133,7 +133,7 @@ private struct ReadingPlanDayView: View {
                 .background(Color.renuevoBackground)
                 .clipShape(RoundedRectangle(cornerRadius: 16))
 
-                SpeechButton(speech: speech, text: "\(day.passage). \(day.reflection)")
+                SpeechButton(speech: speech, text: day.spokenScript)
 
                 Section {
                     Text(day.reflection)

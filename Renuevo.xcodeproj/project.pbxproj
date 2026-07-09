@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		02E47D02ADEDA87CB01C5BAB /* MemorizationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA567AA434DA77F707FAA8B0 /* MemorizationCard.swift */; };
+		04917565750626AF60FCD6E4 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2630176EBAA2DE94AA2530A /* Goal.swift */; };
 		05118DBDF87EE254483D876F /* JournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA5486FDB5DE4F73EECC0A0 /* JournalView.swift */; };
 		05AFF21716E7E8ED7A972FB4 /* PrayerRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCFB031080E453C56A9DF45 /* PrayerRequest.swift */; };
 		05CCB9217317A52403833AE5 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 482211621A7FEDF27065F2CB /* WidgetKit.framework */; };
 		0B9446A0035B1BCB217AD2A2 /* RenuevoWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1560A939D106E5818DB37279 /* RenuevoWidget.swift */; };
 		0CFA8B81299C2103BD7B49EE /* CloudSyncManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED633F2E493344B43066BE60 /* CloudSyncManager.swift */; };
 		0F503F64A0CB07CE61875F8A /* QuoteLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358425C0F96121B90C3C3D70 /* QuoteLibrary.swift */; };
+		10272E50107767BC01107ECA /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D4B3465CFC0C6EB9813941 /* AppGroup.swift */; };
 		106E4676759AA7C11CB93A8A /* Mood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398041338873243B1EB69B7C /* Mood.swift */; };
 		112634389D33F4EB556735B4 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677004B8FF4121E5F0CB9428 /* Theme.swift */; };
 		122617D58190A3D8FAD7D0C9 /* Mood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398041338873243B1EB69B7C /* Mood.swift */; };
@@ -24,22 +26,26 @@
 		1E0827FEAF4646FA22DDD438 /* QuoteLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358425C0F96121B90C3C3D70 /* QuoteLibrary.swift */; };
 		1F9A8121C9190165E59F2617 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE522ABD1FCF8E439C5D7DFE /* Assets.xcassets */; };
 		20C903AFEEC6F68229C8EB4F /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AFA0335446EC30B888BF7D /* Quote.swift */; };
+		2105E39109632B797152D996 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D4B3465CFC0C6EB9813941 /* AppGroup.swift */; };
 		2152740E8C223F7578C6ECD0 /* SeasonalCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586C115BCE07ADDE98977CCD /* SeasonalCollection.swift */; };
 		24C1DB3549FA134590C94782 /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92ED7C43C4E8527DCED78DA /* Habit.swift */; };
 		258B15C5B9FC0D310DD688EB /* RenuevoWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FF3A7B5C0630D98873B126 /* RenuevoWatchApp.swift */; };
+		25E1EE669752FF5EBE9CF278 /* ShareableQuoteCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC7D99051E04C76D430516A /* ShareableQuoteCard.swift */; };
 		26125B30118BDEEAC42B0476 /* DateKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4454869EB907D379AEA0AF /* DateKey.swift */; };
 		26869DE27AC10A2B6B567074 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE522ABD1FCF8E439C5D7DFE /* Assets.xcassets */; };
 		26C534413B889563B2A3FE42 /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AFA0335446EC30B888BF7D /* Quote.swift */; };
+		2FA37970C8DACA2F9765EE17 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2630176EBAA2DE94AA2530A /* Goal.swift */; };
 		30C50A49372FF04C8D699BFD /* SeasonalCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586C115BCE07ADDE98977CCD /* SeasonalCollection.swift */; };
 		323F6C07F13F43786CB22CF8 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677004B8FF4121E5F0CB9428 /* Theme.swift */; };
 		35B7A47E22EED038C3712724 /* MoodLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6508FFA3CDAE2A3BFDE7D188 /* MoodLibrary.swift */; };
 		36A94BDE26A6B0D5D8078D27 /* Mood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398041338873243B1EB69B7C /* Mood.swift */; };
 		37C5B21CE780CAE0BE00266A /* PrayerRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCFB031080E453C56A9DF45 /* PrayerRequest.swift */; };
+		390009A144F11FF1651A3706 /* StorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDD2001FD06721CF1815C14 /* StorageKeys.swift */; };
+		45B19685132EF718DC1F56F8 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2630176EBAA2DE94AA2530A /* Goal.swift */; };
 		470E7D5E6B590D752F54161C /* TodayVerseIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128AE4F5E58F2F9FD6236C34 /* TodayVerseIntent.swift */; };
 		47A12F3801A19211B8752DE6 /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AFA0335446EC30B888BF7D /* Quote.swift */; };
 		4AB42951B8A4B60370D8A617 /* ReadingPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FCF516A409E2578D0EDD41 /* ReadingPlan.swift */; };
 		4B1DC7670E3204F99D5B1AF5 /* MemorizationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA567AA434DA77F707FAA8B0 /* MemorizationCard.swift */; };
-		4C3B2EBD33E492C5057D726E /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E4F8D1CE61FC9DA916A176 /* Goal.swift */; };
 		4E697965B771F6891B8D0EEA /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E25E57485C484C41A3E2204 /* ChatMessage.swift */; };
 		570A94F48A4DC20CE78D41FF /* BreathingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9932B0FF9A77BAB6334B1977 /* BreathingView.swift */; };
 		5A012AD46718A687D3DC4849 /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92ED7C43C4E8527DCED78DA /* Habit.swift */; };
@@ -58,6 +64,7 @@
 		78D364E622455BDD2A011AD9 /* GoalEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5627E2BE249290CBC81C89A /* GoalEditorView.swift */; };
 		7963D47616324CCB83073878 /* ReadingPlanLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADBBF93DC2EA8DD48ECBA12 /* ReadingPlanLibrary.swift */; };
 		79D23384C6B20A464F64980F /* RenuevoWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E43A078F08595C49A899F6 /* RenuevoWidgetBundle.swift */; };
+		79E189A3F0125FFCAA2CA76F /* StorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDD2001FD06721CF1815C14 /* StorageKeys.swift */; };
 		7AA7E42605E3D7BDC9378E82 /* DateKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4454869EB907D379AEA0AF /* DateKey.swift */; };
 		7AEAC1E70772CFEC92DB48B1 /* JournalEntryEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E9E1AFA10DCFA68F7FD81C /* JournalEntryEditor.swift */; };
 		7B2B3392A1D82743D03C4B44 /* DiarioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150D257318451E39E8047562 /* DiarioView.swift */; };
@@ -70,13 +77,16 @@
 		9272099B848281EB36FED550 /* SpeechReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BCE391B52565BCFC409EC26 /* SpeechReader.swift */; };
 		92A689BCC5C1CB4D0AB5B69C /* QuoteLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358425C0F96121B90C3C3D70 /* QuoteLibrary.swift */; };
 		967B244EB4699C700C90AD20 /* MemorizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121CA8522954DEDB465B2F21 /* MemorizationView.swift */; };
+		997064F5160CAB6DFD496296 /* GoalsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03E36102BC8D29113B0AA299 /* GoalsWidget.swift */; };
 		9DF1F71039248C039D9CBA35 /* GoalsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8284F8F92A52D348EFF280 /* GoalsView.swift */; };
 		9F9AC129EF3C60481E5E2843 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 896B7BF2EF3132C2B6DFF1F5 /* Assets.xcassets */; };
+		A28F6065F504A2F9224B565D /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2630176EBAA2DE94AA2530A /* Goal.swift */; };
 		A2A426E7C115D3C5C26A8F55 /* WatchBreathingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFF0FC929D5BA2F815D8F57 /* WatchBreathingView.swift */; };
 		A3B96FB91EAD56B9A731636F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE522ABD1FCF8E439C5D7DFE /* Assets.xcassets */; };
 		AC70197D011DBCB8F75DB65D /* SeasonalCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586C115BCE07ADDE98977CCD /* SeasonalCollection.swift */; };
 		B7B8562C1BB52859133EFBC8 /* Habit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92ED7C43C4E8527DCED78DA /* Habit.swift */; };
 		B99EF2AB62E604EE28EB7D1E /* RenuevoWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 088B1D7708332A6CD87379FA /* RenuevoWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BA6A9EA1C3A5575BDD4A260E /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D4B3465CFC0C6EB9813941 /* AppGroup.swift */; };
 		BC3CD8E34D44AF87B21599E2 /* SeasonalCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586C115BCE07ADDE98977CCD /* SeasonalCollection.swift */; };
 		C03F6B3CFEF9280AE57520C6 /* ReadingPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FCF516A409E2578D0EDD41 /* ReadingPlan.swift */; };
 		C17688FEA3FF8C9990E10315 /* MoodLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6508FFA3CDAE2A3BFDE7D188 /* MoodLibrary.swift */; };
@@ -84,9 +94,12 @@
 		D67A530CB45F729BA12689D1 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F430E08787596C34896C4F /* DataStore.swift */; };
 		DA89320F919C9F126ACC5096 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677004B8FF4121E5F0CB9428 /* Theme.swift */; };
 		E0BF019FE686EDC21D95F574 /* ReadingPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46FCF516A409E2578D0EDD41 /* ReadingPlan.swift */; };
+		E0EEF01A961515ADC2BDEC66 /* StorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDD2001FD06721CF1815C14 /* StorageKeys.swift */; };
 		E3FFA9AC319FA17EC605990F /* DateKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4454869EB907D379AEA0AF /* DateKey.swift */; };
+		E76FBB035B3627D32C10AFE3 /* StorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FDD2001FD06721CF1815C14 /* StorageKeys.swift */; };
 		E973D33CA3C8917E86B88657 /* RenuevoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D0394B6A6FEEB4BDC4F71B /* RenuevoApp.swift */; };
 		EAEB4E34C9ABAFBA45565E43 /* QuoteLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358425C0F96121B90C3C3D70 /* QuoteLibrary.swift */; };
+		F1C41FE242A6D0BFF5B01E99 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D4B3465CFC0C6EB9813941 /* AppGroup.swift */; };
 		F845E33ECD25B9FBA0D3B245 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89017D26BD1238965F1EA867 /* ChatView.swift */; };
 		FAC3F6973780F11F1491A01F /* ReadingPlanLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADBBF93DC2EA8DD48ECBA12 /* ReadingPlanLibrary.swift */; };
 		FAC53D5CD772047EFCDA8701 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE522ABD1FCF8E439C5D7DFE /* Assets.xcassets */; };
@@ -120,6 +133,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		03E36102BC8D29113B0AA299 /* GoalsWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsWidget.swift; sourceTree = "<group>"; };
 		088B1D7708332A6CD87379FA /* RenuevoWidget.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = RenuevoWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		121CA8522954DEDB465B2F21 /* MemorizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorizationView.swift; sourceTree = "<group>"; };
 		128AE4F5E58F2F9FD6236C34 /* TodayVerseIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayVerseIntent.swift; sourceTree = "<group>"; };
@@ -130,7 +144,7 @@
 		2A4454869EB907D379AEA0AF /* DateKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateKey.swift; sourceTree = "<group>"; };
 		2BEED23B63AE76DAC424168D /* Renuevo.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Renuevo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E25E57485C484C41A3E2204 /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
-		30E4F8D1CE61FC9DA916A176 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
+		2FDD2001FD06721CF1815C14 /* StorageKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageKeys.swift; sourceTree = "<group>"; };
 		358425C0F96121B90C3C3D70 /* QuoteLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteLibrary.swift; sourceTree = "<group>"; };
 		37E9E1AFA10DCFA68F7FD81C /* JournalEntryEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalEntryEditor.swift; sourceTree = "<group>"; };
 		398041338873243B1EB69B7C /* Mood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mood.swift; sourceTree = "<group>"; };
@@ -142,6 +156,7 @@
 		553F5356BB239FA1E4AEBBA1 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		586C115BCE07ADDE98977CCD /* SeasonalCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonalCollection.swift; sourceTree = "<group>"; };
 		6508FFA3CDAE2A3BFDE7D188 /* MoodLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodLibrary.swift; sourceTree = "<group>"; };
+		66D4B3465CFC0C6EB9813941 /* AppGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroup.swift; sourceTree = "<group>"; };
 		677004B8FF4121E5F0CB9428 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		6EA5486FDB5DE4F73EECC0A0 /* JournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalView.swift; sourceTree = "<group>"; };
 		7BCE391B52565BCFC409EC26 /* SpeechReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechReader.swift; sourceTree = "<group>"; };
@@ -154,7 +169,9 @@
 		95DE4191753CEE9D626783E0 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		983C6AC6BABEA8A71F5E023D /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
 		9932B0FF9A77BAB6334B1977 /* BreathingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreathingView.swift; sourceTree = "<group>"; };
+		9BC7D99051E04C76D430516A /* ShareableQuoteCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareableQuoteCard.swift; sourceTree = "<group>"; };
 		9F8284F8F92A52D348EFF280 /* GoalsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsView.swift; sourceTree = "<group>"; };
+		A2630176EBAA2DE94AA2530A /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		A7B7244E3490944A2029B1EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		AF925EBCD2C3C4009C564397 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		C2426D0856E48276E86076EC /* JournalEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalEntry.swift; sourceTree = "<group>"; };
@@ -209,7 +226,6 @@
 			isa = PBXGroup;
 			children = (
 				2E25E57485C484C41A3E2204 /* ChatMessage.swift */,
-				30E4F8D1CE61FC9DA916A176 /* Goal.swift */,
 				C2426D0856E48276E86076EC /* JournalEntry.swift */,
 			);
 			path = Models;
@@ -259,6 +275,7 @@
 				ED5F2AE5E82A1653A24485B8 /* PrayerListView.swift */,
 				DDF5E05FCEF83A7B4B30FD91 /* ReadingPlansView.swift */,
 				FDA9046DCF4860E9D52FABB2 /* RootTabView.swift */,
+				9BC7D99051E04C76D430516A /* ShareableQuoteCard.swift */,
 				983C6AC6BABEA8A71F5E023D /* TodayView.swift */,
 			);
 			path = Views;
@@ -317,8 +334,10 @@
 		A6AE6593D8EBFE58B86B926F /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				66D4B3465CFC0C6EB9813941 /* AppGroup.swift */,
 				DE522ABD1FCF8E439C5D7DFE /* Assets.xcassets */,
 				2A4454869EB907D379AEA0AF /* DateKey.swift */,
+				A2630176EBAA2DE94AA2530A /* Goal.swift */,
 				E92ED7C43C4E8527DCED78DA /* Habit.swift */,
 				CA567AA434DA77F707FAA8B0 /* MemorizationCard.swift */,
 				398041338873243B1EB69B7C /* Mood.swift */,
@@ -329,6 +348,7 @@
 				46FCF516A409E2578D0EDD41 /* ReadingPlan.swift */,
 				FADBBF93DC2EA8DD48ECBA12 /* ReadingPlanLibrary.swift */,
 				586C115BCE07ADDE98977CCD /* SeasonalCollection.swift */,
+				2FDD2001FD06721CF1815C14 /* StorageKeys.swift */,
 				677004B8FF4121E5F0CB9428 /* Theme.swift */,
 			);
 			path = Shared;
@@ -337,6 +357,7 @@
 		A6FD211206C63A842E0A9AA6 /* RenuevoWidget */ = {
 			isa = PBXGroup;
 			children = (
+				03E36102BC8D29113B0AA299 /* GoalsWidget.swift */,
 				A7B7244E3490944A2029B1EC /* Info.plist */,
 				CFE6DB6658E8262D23D12D84 /* RenuevoWidget.entitlements */,
 				1560A939D106E5818DB37279 /* RenuevoWidget.swift */,
@@ -530,7 +551,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1C41FE242A6D0BFF5B01E99 /* AppGroup.swift in Sources */,
 				26125B30118BDEEAC42B0476 /* DateKey.swift in Sources */,
+				04917565750626AF60FCD6E4 /* Goal.swift in Sources */,
+				997064F5160CAB6DFD496296 /* GoalsWidget.swift in Sources */,
 				24C1DB3549FA134590C94782 /* Habit.swift in Sources */,
 				02E47D02ADEDA87CB01C5BAB /* MemorizationCard.swift in Sources */,
 				36A94BDE26A6B0D5D8078D27 /* Mood.swift in Sources */,
@@ -543,6 +567,7 @@
 				0B9446A0035B1BCB217AD2A2 /* RenuevoWidget.swift in Sources */,
 				79D23384C6B20A464F64980F /* RenuevoWidgetBundle.swift in Sources */,
 				BC3CD8E34D44AF87B21599E2 /* SeasonalCollection.swift in Sources */,
+				E76FBB035B3627D32C10AFE3 /* StorageKeys.swift in Sources */,
 				778AC818C1DB8DBAA344F373 /* Theme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -551,7 +576,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA6A9EA1C3A5575BDD4A260E /* AppGroup.swift in Sources */,
 				E3FFA9AC319FA17EC605990F /* DateKey.swift in Sources */,
+				A28F6065F504A2F9224B565D /* Goal.swift in Sources */,
 				5A012AD46718A687D3DC4849 /* Habit.swift in Sources */,
 				4B1DC7670E3204F99D5B1AF5 /* MemorizationCard.swift in Sources */,
 				106E4676759AA7C11CB93A8A /* Mood.swift in Sources */,
@@ -563,6 +590,7 @@
 				5EE9E8E3F95895F7F370889D /* ReadingPlanLibrary.swift in Sources */,
 				258B15C5B9FC0D310DD688EB /* RenuevoWatchApp.swift in Sources */,
 				2152740E8C223F7578C6ECD0 /* SeasonalCollection.swift in Sources */,
+				E0EEF01A961515ADC2BDEC66 /* StorageKeys.swift in Sources */,
 				DA89320F919C9F126ACC5096 /* Theme.swift in Sources */,
 				A2A426E7C115D3C5C26A8F55 /* WatchBreathingView.swift in Sources */,
 			);
@@ -572,7 +600,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10272E50107767BC01107ECA /* AppGroup.swift in Sources */,
 				7AA7E42605E3D7BDC9378E82 /* DateKey.swift in Sources */,
+				2FA37970C8DACA2F9765EE17 /* Goal.swift in Sources */,
 				B7B8562C1BB52859133EFBC8 /* Habit.swift in Sources */,
 				704E95B946ED02C4750D9B0E /* MemorizationCard.swift in Sources */,
 				122617D58190A3D8FAD7D0C9 /* Mood.swift in Sources */,
@@ -584,6 +614,7 @@
 				60A7D92FB83746F23A94D619 /* ReadingPlanLibrary.swift in Sources */,
 				6C38E5F95FA2BB9075238199 /* RenuevoMenuBarApp.swift in Sources */,
 				AC70197D011DBCB8F75DB65D /* SeasonalCollection.swift in Sources */,
+				390009A144F11FF1651A3706 /* StorageKeys.swift in Sources */,
 				323F6C07F13F43786CB22CF8 /* Theme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -592,6 +623,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2105E39109632B797152D996 /* AppGroup.swift in Sources */,
 				570A94F48A4DC20CE78D41FF /* BreathingView.swift in Sources */,
 				4E697965B771F6891B8D0EEA /* ChatMessage.swift in Sources */,
 				F845E33ECD25B9FBA0D3B245 /* ChatView.swift in Sources */,
@@ -599,7 +631,7 @@
 				D67A530CB45F729BA12689D1 /* DataStore.swift in Sources */,
 				FFABEC80BB2A9B6020CAC470 /* DateKey.swift in Sources */,
 				7B2B3392A1D82743D03C4B44 /* DiarioView.swift in Sources */,
-				4C3B2EBD33E492C5057D726E /* Goal.swift in Sources */,
+				45B19685132EF718DC1F56F8 /* Goal.swift in Sources */,
 				78D364E622455BDD2A011AD9 /* GoalEditorView.swift in Sources */,
 				9DF1F71039248C039D9CBA35 /* GoalsView.swift in Sources */,
 				5F8BDEFB295CBCACAF4C2F8F /* Habit.swift in Sources */,
@@ -624,7 +656,9 @@
 				E973D33CA3C8917E86B88657 /* RenuevoApp.swift in Sources */,
 				D28D68416B0E9AF95EE29CE5 /* RootTabView.swift in Sources */,
 				30C50A49372FF04C8D699BFD /* SeasonalCollection.swift in Sources */,
+				25E1EE669752FF5EBE9CF278 /* ShareableQuoteCard.swift in Sources */,
 				9272099B848281EB36FED550 /* SpeechReader.swift in Sources */,
+				79E189A3F0125FFCAA2CA76F /* StorageKeys.swift in Sources */,
 				112634389D33F4EB556735B4 /* Theme.swift in Sources */,
 				470E7D5E6B590D752F54161C /* TodayVerseIntent.swift in Sources */,
 				18820186AE556200A5121F4A /* TodayView.swift in Sources */,

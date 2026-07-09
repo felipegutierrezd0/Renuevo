@@ -7,6 +7,19 @@ struct ReadingPlanDay: Identifiable, Codable, Hashable {
     var passageReference: String
     var reflection: String
     var action: String
+
+    /// Full script for text-to-speech, with section titles announced.
+    var spokenScript: String {
+        [
+            "Día \(id). \(title).",
+            passage,
+            "\(passageReference).",
+            "Reflexión.",
+            reflection,
+            "Acción de hoy.",
+            action,
+        ].joined(separator: " ")
+    }
 }
 
 struct ReadingPlan: Identifiable, Codable, Hashable {

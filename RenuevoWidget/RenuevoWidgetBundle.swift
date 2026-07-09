@@ -5,5 +5,6 @@ import SwiftUI
 struct RenuevoWidgetBundle: WidgetBundle {
     var body: some Widget {
         RenuevoWidget()
+        GoalsWidget()
     }
 }

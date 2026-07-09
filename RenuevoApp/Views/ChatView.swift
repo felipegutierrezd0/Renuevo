@@ -10,19 +10,25 @@ struct ChatView: View {
                 ScrollView {
                     VStack(alignment: .leading, spacing: 20) {
                         if store.chatMessages.isEmpty {
-                            VStack(spacing: 10) {
-                                Image(systemName: "bubble.left.and.text.bubble.right")
-                                    .font(.system(size: 36))
-                                    .foregroundStyle(.secondary)
-                                Text("Cuéntame cómo te sientes hoy")
-                                    .font(.headline)
-                                Text("Por ejemplo: \"Hoy me siento ansioso\" o \"Estoy agradecido pero cansado\".")
-                                    .font(.subheadline)
-                                    .foregroundStyle(.secondary)
-                                    .multilineTextAlignment(.center)
+                            VStack(spacing: 18) {
+                                VStack(spacing: 10) {
+                                    Image(systemName: "bubble.left.and.text.bubble.right")
+                                        .font(.system(size: 36))
+                                        .foregroundStyle(.secondary)
+                                    Text("Cuéntame cómo te sientes hoy")
+                                        .font(.headline)
+                                    Text("Toca un ejemplo o escribe con tus propias palabras.")
+                                        .font(.subheadline)
+                                        .foregroundStyle(.secondary)
+                                        .multilineTextAlignment(.center)
+                                }
+
+                                ChatSuggestions { suggestion in
+                                    send(suggestion)
+                                }
                             }
                             .frame(maxWidth: .infinity)
-                            .padding(.top, 60)
+                            .padding(.top, 40)
                         }
 
                         ForEach(store.chatMessages) { message in
@@ -71,11 +77,60 @@ struct ChatView: View {
     }
 
     private func send() {
-        let text = draft.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !text.isEmpty else { return }
-        let response = MoodLibrary.respond(to: text)
-        store.addChatMessage(ChatMessage(userText: text, response: response))
+        send(draft)
+    }
+
+    private func send(_ text: String) {
+        let trimmed = text.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return }
+        let response = MoodLibrary.respond(to: trimmed)
+        store.addChatMessage(ChatMessage(userText: trimmed, response: response))
         draft = ""
+    }
+}
+
+private struct ChatSuggestions: View {
+    let onSelect: (String) -> Void
+
+    private struct Suggestion: Identifiable {
+        let id = UUID()
+        let text: String
+        let symbol: String
+    }
+
+    private let suggestions: [Suggestion] = [
+        Suggestion(text: "Hoy me siento ansioso por el futuro", symbol: "wind"),
+        Suggestion(text: "Estoy agradecido por lo que tengo", symbol: "heart"),
+        Suggestion(text: "Me siento triste y no sé por qué", symbol: "cloud.rain"),
+        Suggestion(text: "Estoy agotado, no tengo energía", symbol: "moon.zzz"),
+        Suggestion(text: "Tengo miedo de tomar una decisión", symbol: "exclamationmark.shield"),
+        Suggestion(text: "Siento esperanza por lo que viene", symbol: "sparkles"),
+    ]
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            ForEach(suggestions) { suggestion in
+                Button {
+                    onSelect(suggestion.text)
+                } label: {
+                    HStack(spacing: 10) {
+                        Image(systemName: suggestion.symbol)
+                            .frame(width: 20)
+                        Text(suggestion.text)
+                            .multilineTextAlignment(.leading)
+                        Spacer(minLength: 0)
+                    }
+                    .font(.subheadline)
+                    .padding(.horizontal, 14)
+                    .padding(.vertical, 10)
+                    .background(Color.renuevoAccent.opacity(0.1))
+                    .foregroundStyle(Color.renuevoAccent)
+                    .clipShape(RoundedRectangle(cornerRadius: 14))
+                }
+                .buttonStyle(.plain)
+            }
+        }
+        .padding(.horizontal, 24)
     }
 }
 
@@ -134,10 +189,7 @@ private struct ChatExchangeView: View {
                         .fontWeight(.medium)
                 }
 
-                SpeechButton(
-                    speech: speech,
-                    text: "\(message.response.passage). \(message.response.reflection). \(message.response.prayer)"
-                )
+                SpeechButton(speech: speech, text: message.response.spokenScript)
             }
             .padding(16)
             .frame(maxWidth: .infinity, alignment: .leading)

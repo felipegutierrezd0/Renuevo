@@ -1,57 +1,74 @@
 import Foundation
 import Combine
+import WidgetKit
 
 /// Persists goals, journal, habits, prayers and progress only on-device, via
-/// UserDefaults + JSON. No account, no network by default — everything stays
-/// on the user's phone unless iCloud sync is enabled (see `CloudSyncManager`).
+/// UserDefaults + JSON, in the shared App Group container so the widget
+/// extension can read goals/habits too. No account, no network by default —
+/// everything stays on the user's phone unless iCloud sync is enabled (see
+/// `CloudSyncManager`).
 final class DataStore: ObservableObject {
     static let shared = DataStore()
 
     @Published var goals: [Goal] = [] {
-        didSet { save(goals, forKey: Keys.goals); CloudSyncManager.shared.pushAll() }
+        didSet {
+            save(goals, forKey: StorageKeys.goals)
+            CloudSyncManager.shared.pushAll()
+            WidgetCenter.shared.reloadAllTimelines()
+        }
     }
     @Published var entries: [JournalEntry] = [] {
-        didSet { save(entries, forKey: Keys.entries); CloudSyncManager.shared.pushAll() }
+        didSet { save(entries, forKey: StorageKeys.entries); CloudSyncManager.shared.pushAll() }
     }
     @Published var chatMessages: [ChatMessage] = [] {
-        didSet { save(chatMessages, forKey: Keys.chatMessages) }
+        didSet { save(chatMessages, forKey: StorageKeys.chatMessages) }
     }
     @Published var habits: [Habit] = [] {
-        didSet { save(habits, forKey: Keys.habits); CloudSyncManager.shared.pushAll() }
+        didSet {
+            save(habits, forKey: StorageKeys.habits)
+            CloudSyncManager.shared.pushAll()
+            WidgetCenter.shared.reloadAllTimelines()
+        }
     }
     @Published var prayerRequests: [PrayerRequest] = [] {
-        didSet { save(prayerRequests, forKey: Keys.prayerRequests); CloudSyncManager.shared.pushAll() }
+        didSet { save(prayerRequests, forKey: StorageKeys.prayerRequests); CloudSyncManager.shared.pushAll() }
     }
     @Published var readingProgress: [String: ReadingPlanProgress] = [:] {
-        didSet { save(readingProgress, forKey: Keys.readingProgress) }
+        didSet { save(readingProgress, forKey: StorageKeys.readingProgress) }
     }
     @Published var memorizationCards: [Int: MemorizationCard] = [:] {
-        didSet { save(memorizationCards, forKey: Keys.memorizationCards) }
+        didSet { save(memorizationCards, forKey: StorageKeys.memorizationCards) }
     }
     @Published var appOpenDayKeys: Set<String> = [] {
-        didSet { save(appOpenDayKeys, forKey: Keys.appOpenDayKeys) }
-    }
-
-    private enum Keys {
-        static let goals = "renuevo.goals.v1"
-        static let entries = "renuevo.journal.v1"
-        static let chatMessages = "renuevo.chat.v1"
-        static let habits = "renuevo.habits.v1"
-        static let prayerRequests = "renuevo.prayers.v1"
-        static let readingProgress = "renuevo.readingProgress.v1"
-        static let memorizationCards = "renuevo.memorization.v1"
-        static let appOpenDayKeys = "renuevo.appOpenDayKeys.v1"
+        didSet { save(appOpenDayKeys, forKey: StorageKeys.appOpenDayKeys) }
     }
 
     private init() {
-        goals = load([Goal].self, forKey: Keys.goals) ?? []
-        entries = load([JournalEntry].self, forKey: Keys.entries) ?? []
-        chatMessages = load([ChatMessage].self, forKey: Keys.chatMessages) ?? []
-        habits = load([Habit].self, forKey: Keys.habits) ?? []
-        prayerRequests = load([PrayerRequest].self, forKey: Keys.prayerRequests) ?? []
-        readingProgress = load([String: ReadingPlanProgress].self, forKey: Keys.readingProgress) ?? [:]
-        memorizationCards = load([Int: MemorizationCard].self, forKey: Keys.memorizationCards) ?? [:]
-        appOpenDayKeys = load(Set<String>.self, forKey: Keys.appOpenDayKeys) ?? []
+        Self.migrateToAppGroupIfNeeded()
+        goals = load([Goal].self, forKey: StorageKeys.goals) ?? []
+        entries = load([JournalEntry].self, forKey: StorageKeys.entries) ?? []
+        chatMessages = load([ChatMessage].self, forKey: StorageKeys.chatMessages) ?? []
+        habits = load([Habit].self, forKey: StorageKeys.habits) ?? []
+        prayerRequests = load([PrayerRequest].self, forKey: StorageKeys.prayerRequests) ?? []
+        readingProgress = load([String: ReadingPlanProgress].self, forKey: StorageKeys.readingProgress) ?? [:]
+        memorizationCards = load([Int: MemorizationCard].self, forKey: StorageKeys.memorizationCards) ?? [:]
+        appOpenDayKeys = load(Set<String>.self, forKey: StorageKeys.appOpenDayKeys) ?? []
+    }
+
+    /// One-time copy from the old per-app UserDefaults into the shared App
+    /// Group container, for anyone who had data before the widget needed it.
+    private static func migrateToAppGroupIfNeeded() {
+        let migratedKey = "renuevo.migratedToAppGroup.v1"
+        guard !AppGroup.defaults.bool(forKey: migratedKey) else { return }
+        for key in [
+            StorageKeys.goals, StorageKeys.entries, StorageKeys.chatMessages, StorageKeys.habits, StorageKeys.prayerRequests,
+            StorageKeys.readingProgress, StorageKeys.memorizationCards, StorageKeys.appOpenDayKeys,
+        ] {
+            if let data = UserDefaults.standard.data(forKey: key) {
+                AppGroup.defaults.set(data, forKey: key)
+            }
+        }
+        AppGroup.defaults.set(true, forKey: migratedKey)
     }
 
     // MARK: - Goals
@@ -238,11 +255,11 @@ final class DataStore: ObservableObject {
 
     private func save<T: Encodable>(_ value: T, forKey key: String) {
         guard let data = try? JSONEncoder().encode(value) else { return }
-        UserDefaults.standard.set(data, forKey: key)
+        AppGroup.defaults.set(data, forKey: key)
     }
 
     private func load<T: Decodable>(_ type: T.Type, forKey key: String) -> T? {
-        guard let data = UserDefaults.standard.data(forKey: key) else { return nil }
+        guard let data = AppGroup.defaults.data(forKey: key) else { return nil }
         return try? JSONDecoder().decode(T.self, from: data)
     }
 }

@@ -74,4 +74,21 @@ struct MoodResponse: Codable {
     let prayer: String
     let exercises: [String]
     let encouragement: String
+
+    /// Full script for text-to-speech, with section titles announced.
+    var spokenScript: String {
+        [
+            "Pasaje.",
+            passage,
+            "\(passageReference).",
+            "Reflexión.",
+            reflection,
+            "Oración.",
+            prayer,
+            "Ejercicios para calmarte.",
+            exercises.joined(separator: ". "),
+            "Palabras de ánimo.",
+            encouragement,
+        ].joined(separator: " ")
+    }
 }

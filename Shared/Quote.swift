@@ -31,4 +31,24 @@ struct Quote: Identifiable, Codable, Hashable {
     let action: String
     /// A short prayer tied to the theme.
     let prayer: String
+
+    /// Full script for text-to-speech, with section titles announced so
+    /// listening feels like a guided devotional rather than a wall of text.
+    var spokenScript: String {
+        [
+            "\(category.rawValue).",
+            text,
+            "\(reference).",
+            "Reflexión de hoy.",
+            reflection,
+            "Enseñanza práctica.",
+            practicalTeaching,
+            "Pregunta para reflexionar.",
+            question,
+            "Acción concreta para hoy.",
+            action,
+            "Oración.",
+            prayer,
+        ].joined(separator: " ")
+    }
 }
