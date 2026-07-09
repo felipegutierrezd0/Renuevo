@@ -35,6 +35,8 @@ struct PodcastsView: View {
                     }
                     .buttonStyle(.plain)
                 }
+            } header: {
+                Text("Recomendados para ti")
             } footer: {
                 Text("Se abre en la app de Spotify si la tienes instalada, o en el navegador.")
             }

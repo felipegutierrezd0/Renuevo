@@ -15,6 +15,9 @@ struct RootTabView: View {
             NavigationStack { InsightsView() }
                 .tabItem { Label("Crecimiento", systemImage: "chart.line.uptrend.xyaxis") }
 
+            NavigationStack { PodcastsView() }
+                .tabItem { Label("Podcasts", systemImage: "mic.fill") }
+
             ChatView()
                 .tabItem { Label("Chat", systemImage: "bubble.left.and.text.bubble.right.fill") }
         }
